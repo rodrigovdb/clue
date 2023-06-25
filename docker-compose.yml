@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  web:
+    tty: true
+    stdin_open: true
+    image: clue
+    build: .
+    ports:
+      - 4200:4200
+    volumes:
+      - .:/var/app
+      # A volume dedicated to node modules.
+      - /var/app/node_modules
+      # - node_modules:/var/app/node_modules
+
+# volumes:
+#   node_modules:
