@@ -1,4 +1,4 @@
-FROM node:19.3
+FROM node:18-alpine
 
 MAINTAINER Rodrigo VDB "rodrigovdb@gmail.com"
 
