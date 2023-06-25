@@ -42,12 +42,20 @@ export class SheetComponent {
     { name: 'Study', checked: false }
   ]
 
-  suspect: Suspect = {name: '', color: '', checked: false};
-  weapon: Weapon = {name: '', checked: false};
-  room: Room = {name: '', checked: false};
+  suspect: Suspect = { name: '', color: '', checked: false };
+  weapon: Weapon = { name: '', checked: false };
+  room: Room = { name: '', checked: false };
 
   checkSuspect(ob: MatCheckboxChange){
-    console.log('verifySuspects()', ob.checked);
-    console.log(this.suspects.filter(item => item.checked === true).length)
+    const totalSuspects = this.suspects.length
+    const checkedSuspects = this.suspects.filter(item => item.checked === true).length
+    const emptySuspect = { name: '', color: '', checked: false };
+
+    if(checkedSuspects == (totalSuspects - 1)){
+      this.suspect = this.suspects.find(item => item.checked === false) || emptySuspect;
+    }
+    else {
+      this.suspect = emptySuspect;
+    }
   }
 }

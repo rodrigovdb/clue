@@ -11,7 +11,7 @@
 
     <section class="list-items">
       <p *ngFor="let suspect of suspects; let i = index">
-        <mat-checkbox (change)="checkSuspect($event)">{{ suspect.name }}</mat-checkbox>
+        <mat-checkbox [(ngModel)]="suspects[i].checked" (change)="checkSuspect($event)">{{ suspect.name }}</mat-checkbox>
       </p>
     </section>
   </mat-expansion-panel>
