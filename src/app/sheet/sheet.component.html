@@ -1,1 +1,52 @@
-<p>sheet works!</p>
+<mat-accordion multi>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Suspect
+      </mat-panel-title>
+      <mat-panel-description>
+        {{suspect.name}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <section class="list-items">
+      <p *ngFor="let suspect of suspects; let i = index">
+        <mat-checkbox (change)="checkSuspect($event)">{{ suspect.name }}</mat-checkbox>
+      </p>
+    </section>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Weapon
+      </mat-panel-title>
+      <mat-panel-description>
+        {{weapon.name}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <section class="list-items">
+      <p *ngFor="let weapon of weapons; let i = index">
+        <mat-checkbox (change)="checkSuspect($event)">{{ weapon.name }}</mat-checkbox>
+      </p>
+    </section>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Room
+      </mat-panel-title>
+      <mat-panel-description>
+        {{room.name}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <section class="list-items">
+      <p *ngFor="let room of rooms; let i = index">
+        <mat-checkbox (change)="checkSuspect($event)">{{ room.name }}</mat-checkbox>
+      </p>
+    </section>
+  </mat-expansion-panel>
+</mat-accordion>
