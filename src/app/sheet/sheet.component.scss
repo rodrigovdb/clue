@@ -1,3 +1,8 @@
 .list-items {
   margin: 12px 0;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}

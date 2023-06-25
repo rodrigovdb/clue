@@ -3,6 +3,8 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Suspect } from '../interfaces/suspect';
 import { Weapon } from '../interfaces/weapon';
 import { Room } from '../interfaces/room';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-sheet',
@@ -45,6 +47,18 @@ export class SheetComponent {
   suspect: Suspect = { name: '', color: '', checked: false };
   weapon: Weapon = { name: '', checked: false };
   room: Room = { name: '', checked: false };
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.suspects.forEach(item => item.checked = false);
+      this.weapons.forEach(item => item.checked = false);
+      this.rooms.forEach(item => item.checked = false);
+    });
+  }
 
   checkSuspect(ob: MatCheckboxChange){
     const emptySuspect = { name: '', color: '', checked: false };

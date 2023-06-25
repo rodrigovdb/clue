@@ -2,15 +2,15 @@
   <span>{{title}}</span>
   <span class="example-spacer"></span>
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
-      <mat-icon>more_vert</mat-icon>
+  <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item aria-label="Add Album" [routerLink]="['/albums/new']">
+      <mat-icon>add</mat-icon>
+      <span>Add Album</span>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item aria-label="Add Album" [routerLink]="['/albums/new']">
-        <mat-icon>add</mat-icon>
-        <span>Add Album</span>
-      </button>
-    </mat-menu>
+  </mat-menu> -->
 </mat-toolbar>
 
 <div class="app-content">
