@@ -47,15 +47,24 @@ export class SheetComponent {
   room: Room = { name: '', checked: false };
 
   checkSuspect(ob: MatCheckboxChange){
-    const totalSuspects = this.suspects.length
-    const checkedSuspects = this.suspects.filter(item => item.checked === true).length
     const emptySuspect = { name: '', color: '', checked: false };
 
-    if(checkedSuspects == (totalSuspects - 1)){
+    if(this.suspects.filter(item => item.checked === true).length == (this.suspects.length - 1)){
       this.suspect = this.suspects.find(item => item.checked === false) || emptySuspect;
     }
     else {
       this.suspect = emptySuspect;
+    }
+  }
+
+  checkWeapon(ob: MatCheckboxChange){
+    const emptyWeapon = { name: '', checked: false };
+
+    if(this.weapons.filter(item => item.checked === true).length == (this.weapons.length - 1)){
+      this.weapon = this.weapons.find(item => item.checked === false) || emptyWeapon;
+    }
+    else {
+      this.weapon = emptyWeapon;
     }
   }
 }
