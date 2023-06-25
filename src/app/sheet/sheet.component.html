@@ -28,7 +28,7 @@
 
     <section class="list-items">
       <p *ngFor="let weapon of weapons; let i = index">
-        <mat-checkbox [(ngModel)]="weapons[i].checked"  (change)="checkWeapon($event)">{{ weapon.name }}</mat-checkbox>
+        <mat-checkbox [(ngModel)]="weapons[i].checked" (change)="checkWeapon($event)">{{ weapon.name }}</mat-checkbox>
       </p>
     </section>
   </mat-expansion-panel>
@@ -45,7 +45,7 @@
 
     <section class="list-items">
       <p *ngFor="let room of rooms; let i = index">
-        <mat-checkbox (change)="checkSuspect($event)">{{ room.name }}</mat-checkbox>
+        <mat-checkbox [(ngModel)]="rooms[i].checked" (change)="checkRoom($event)">{{ room.name }}</mat-checkbox>
       </p>
     </section>
   </mat-expansion-panel>

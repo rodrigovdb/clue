@@ -67,4 +67,15 @@ export class SheetComponent {
       this.weapon = emptyWeapon;
     }
   }
+
+  checkRoom(ob: MatCheckboxChange){
+    const emptyRoom = { name: '', checked: false };
+
+    if(this.rooms.filter(item => item.checked === true).length == (this.rooms.length - 1)){
+      this.room = this.rooms.find(item => item.checked === false) || emptyRoom;
+    }
+    else {
+      this.room = emptyRoom;
+    }
+  }
 }
