@@ -16,12 +16,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog'; 
 
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { DiceRollerDialogComponent } from './dice-roller-dialog/dice-roller-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SheetComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    DiceRollerDialogComponent
   ],
   imports: [
     BrowserModule,

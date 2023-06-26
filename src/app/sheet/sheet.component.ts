@@ -5,6 +5,7 @@ import { Weapon } from '../interfaces/weapon';
 import { Room } from '../interfaces/room';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { DiceRollerDialogComponent } from '../dice-roller-dialog/dice-roller-dialog.component';
 
 @Component({
   selector: 'app-sheet',
@@ -12,8 +13,6 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
   styleUrls: ['./sheet.component.scss']
 })
 export class SheetComponent {
-  panelOpenState = false;
-
   suspects : Suspect[] = [
     { name: 'Miss Scarlet', color: 'red', checked: false },
     { name: 'Colonel Mustard', color: 'yellow', checked: false },
@@ -48,16 +47,23 @@ export class SheetComponent {
   weapon: Weapon = { name: '', checked: false };
   room: Room = { name: '', checked: false };
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public resetDialog: MatDialog,
+    public diceRollerDialog: MatDialog
+    ) {}
 
-  openDialog() {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+  openResetDialog() {
+    const dialogRef = this.resetDialog.open(ConfirmationDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       this.suspects.forEach(item => item.checked = false);
       this.weapons.forEach(item => item.checked = false);
       this.rooms.forEach(item => item.checked = false);
     });
+  }
+
+  openDiceRollerDialog() {
+    const dialogRef = this.diceRollerDialog.open(DiceRollerDialogComponent);
   }
 
   checkSuspect(ob: MatCheckboxChange){
