@@ -1,8 +1,20 @@
 {
   "app": {
-    "title": "Clue Sheet"
+    "title": "Clue Sheet",
+    "clear-all": "Clear All",
+    "roll-dice": "Roll the Dice",
+    "suspect": "Suspect",
+    "weapon": "Weapon",
+    "room": "Room"
   },
-  "sheet": {
-    "clear-all": "Clear All"
+  "dice-roller": {
+    "title": "Dice Roller"
+  },
+  "confirmation-dialog": {
+    "title": "Clear all",
+    "are-you-sure": "Are you sure?",
+    "confirmation-text": "This will clear all the data from the sheet. This action cannot be undone.",
+    "cancel": "Cancel",
+    "confirm": "Clear All"
   }
 }
