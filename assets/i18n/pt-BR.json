@@ -1,0 +1,21 @@
+{
+  "app": {
+    "title": "Detetive - Planilha",
+    "clear-all": "Limpar tudo",
+    "roll-dice": "Rolar Dados",
+    "suspect": "Suspeito",
+    "weapon": "Arma",
+    "room": "Aposento",
+    "language": "Idioma"
+  },
+  "dice-roller": {
+    "title": "Rolador de Dados"
+  },
+  "confirmation-dialog": {
+    "title": "Limpar Tudo",
+    "are-you-sure": "Está certo disso?",
+    "confirmation-text": "Esta operação irá limpar sua ficha. Isso não poderá ser desfeito.",
+    "cancel": "Cancelar",
+    "confirm": "Limpar tudo"
+  }
+}

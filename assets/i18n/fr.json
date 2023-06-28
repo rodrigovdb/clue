@@ -1,0 +1,21 @@
+{
+  "app": {
+    "title": "Feuille de Cluedo",
+    "clear-all": "Tout effacer",
+    "roll-dice": "Lancer les dés",
+    "suspect": "Suspect",
+    "weapon": "Arme",
+    "room": "Lieu",
+    "language": "Langue",
+  },
+  "dice-roller": {
+    "title": "Lancer les dés",
+  },
+  "confirmation-dialog": {
+    "title": "Tout effacer",
+    "are-you-sure": "Êtes-vous sûr ?",
+    "confirmation-text": "Cela effacera toutes les données de la feuille. Cette action est irréversible.",
+    "cancel": "Annuler",
+    "confirm": "Confirmer"
+  }
+}
