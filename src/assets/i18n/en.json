@@ -5,7 +5,8 @@
     "roll-dice": "Roll the Dice",
     "suspect": "Suspect",
     "weapon": "Weapon",
-    "room": "Room"
+    "room": "Room",
+    "language": "Language"
   },
   "dice-roller": {
     "title": "Dice Roller"
