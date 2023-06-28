@@ -6,10 +6,10 @@
     "suspect": "Suspect",
     "weapon": "Arme",
     "room": "Lieu",
-    "language": "Langue",
+    "language": "Langue"
   },
   "dice-roller": {
-    "title": "Lancer les dés",
+    "title": "Lancer les dés"
   },
   "confirmation-dialog": {
     "title": "Tout effacer",
