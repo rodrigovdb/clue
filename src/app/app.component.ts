@@ -1,6 +1,8 @@
 import { Component, Injectable, OnChanges, SimpleChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import {TranslateService} from '@ngx-translate/core';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 interface Language {
   code: string;
@@ -14,7 +16,7 @@ interface Language {
 })
 @Injectable()
 export class AppComponent {
-  language = this.getData('language') || 'pt-BR';
+  language = this.getData('language') || 'en';
 
   languages: Language[] = [
     { code: 'en', name: 'English' },
@@ -22,17 +24,24 @@ export class AppComponent {
     { code: 'fr', name: 'Français' },
   ];
 
-  constructor(private translate: TranslateService) {
+  constructor(
+    private translate: TranslateService,
+    public resetDialog: MatDialog
+  ) {
     translate.setDefaultLang('en');
 
     translate.use(this.language);
-
-    console.log(this.getData('language'));
   }
 
   changeLanguage() {
-    this.translate.use(this.language);
-    this.saveData('language', this.language);
+    const dialogRef = this.resetDialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.translate.use(this.language);
+      this.saveData('language', this.language);
+
+      window.location.reload();
+    });
   }
 
   saveData(key: string, data: any): void {

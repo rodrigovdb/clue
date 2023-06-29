@@ -9,7 +9,9 @@
     "language": "Language"
   },
   "dice-roller": {
-    "title": "Dice Roller"
+    "title": "Dice Roller",
+    "dice": "Die",
+    "total": "Total"
   },
   "confirmation-dialog": {
     "title": "Clear all",
@@ -17,5 +19,32 @@
     "confirmation-text": "This will clear all the data from the sheet. This action cannot be undone.",
     "cancel": "Cancel",
     "confirm": "Clear All"
+  },
+  "suspects": {
+    "red": "Miss Scarlet",
+    "yellow": "Colonel Mustard",
+    "white": "Mrs. White",
+    "green": "Mr. Green",
+    "blue": "Mrs. Peacock",
+    "purple": "Professor Plum"
+  },
+  "weapons": {
+    "candlestick": "Candlestick",
+    "knife": "Knife",
+    "lead-pipe": "Lead Pipe",
+    "revolver": "Revolver",
+    "rope": "Rope",
+    "wrench": "Wrench"
+  },
+  "rooms": {
+    "ballroom": "Ballroom",
+    "billiard-room": "Billiard Room",
+    "conservatory": "Conservatory",
+    "dining-room": "Dining Room",
+    "hall": "Hall",
+    "kitchen": "Kitchen",
+    "library": "Library",
+    "lounge": "Lounge",
+    "study": "Study"
   }
 }

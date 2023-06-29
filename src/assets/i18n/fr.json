@@ -6,10 +6,10 @@
     "suspect": "Suspect",
     "weapon": "Arme",
     "room": "Lieu",
-    "language": "Langue",
+    "language": "Langue"
   },
   "dice-roller": {
-    "title": "Lancer les dés",
+    "title": "Lancer les dés"
   },
   "confirmation-dialog": {
     "title": "Tout effacer",
@@ -17,5 +17,32 @@
     "confirmation-text": "Cela effacera toutes les données de la feuille. Cette action est irréversible.",
     "cancel": "Annuler",
     "confirm": "Confirmer"
+  },
+  "suspects": {
+    "red": "Mademoiselle Josephine Rose",
+    "yellow": "Colonel Moutarde",
+    "white": "Madame Blanche Leblanc",
+    "green": "Révérend John Olive",
+    "blue": "Madame Patricia Pervenche",
+    "purple": "Professeur Peter Violet"
+  },
+  "weapons": {
+    "candlestick": "Chandelier",
+    "knife": "Couteau",
+    "lead-pipe": "Tuyau de plomb",
+    "revolver": "Revolver",
+    "rope": "Corde",
+    "wrench": "Clé anglaise"
+  },
+  "rooms": {
+    "hall": "Hall",
+    "lounge": "Salon",
+    "dining-room": "Salle à manger",
+    "kitchen": "Cuisine",
+    "ballroom": "Salle de bal",
+    "conservatory": "Veranda",
+    "billiard-room": "Salle de billard",
+    "library": "Bibliothèque",
+    "study": "Bureau"
   }
 }

@@ -1,12 +1,22 @@
-<h2 mat-dialog-title>
-  <span translate>dice-roller.title</span>
-</h2>
+<div id="dice-roller-content">
+  <h2 mat-dialog-title>
+    <span translate>dice-roller.title</span>
+  </h2>
 
-<mat-dialog-content class="mat-typography">
-  <p>{{dice1}}</p>
-  <p>{{dice2}}</p>
-</mat-dialog-content>
+  <mat-dialog-content class="mat-typography">
+    <mat-grid-list cols="2">
+      <mat-grid-tile colspan="1">{{ 'dice-roller.dice' | translate }} 1</mat-grid-tile>
+      <mat-grid-tile colspan="1">{{ dice1 }}</mat-grid-tile>
 
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Close</button>
-</mat-dialog-actions>
+      <mat-grid-tile colspan="1">{{ 'dice-roller.dice' | translate }} 2</mat-grid-tile>
+      <mat-grid-tile colspan="1">{{ dice2 }}</mat-grid-tile>
+
+      <mat-grid-tile colspan="1">{{ 'dice-roller.total' | translate }}</mat-grid-tile>
+      <mat-grid-tile colspan="1">{{ dice1 + dice2 }}</mat-grid-tile>
+    </mat-grid-list>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</div>

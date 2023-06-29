@@ -6,6 +6,7 @@ import { Room } from '../interfaces/room';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { DiceRollerDialogComponent } from '../dice-roller-dialog/dice-roller-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sheet',
@@ -13,44 +14,48 @@ import { DiceRollerDialogComponent } from '../dice-roller-dialog/dice-roller-dia
   styleUrls: ['./sheet.component.scss']
 })
 export class SheetComponent {
-  suspects : Suspect[] = [
-    { name: 'Miss Scarlet', color: 'red', checked: false },
-    { name: 'Colonel Mustard', color: 'yellow', checked: false },
-    { name: 'Mrs. White', color: 'white', checked: false },
-    { name: 'Mr. Green', color: 'green', checked: false },
-    { name: 'Mrs. Peacock', color: 'blue', checked: false },
-    { name: 'Professor Plum', color: 'purple', checked: false }
-  ]
+  suspects : Suspect[] = []
 
-  weapons : Weapon[] = [
-    { name: 'Candlestick', checked: false },
-    { name: 'Knife', checked: false },
-    { name: 'Lead Pipe', checked: false },
-    { name: 'Revolver', checked: false },
-    { name: 'Rope', checked: false },
-    { name: 'Wrench', checked: false }
-  ]
+  weapons : Weapon[] = []
 
-  rooms : Room[] = [
-    { name: 'Ballroom', checked: false },
-    { name: 'Billiard Room', checked: false },
-    { name: 'Conservatory', checked: false },
-    { name: 'Dining Room', checked: false },
-    { name: 'Hall', checked: false },
-    { name: 'Kitchen', checked: false },
-    { name: 'Library', checked: false },
-    { name: 'Lounge', checked: false },
-    { name: 'Study', checked: false }
-  ]
+  rooms : Room[] = []
 
   suspect: Suspect = { name: '', color: '', checked: false };
   weapon: Weapon = { name: '', checked: false };
   room: Room = { name: '', checked: false };
 
   constructor(
+    public translate: TranslateService,
     public resetDialog: MatDialog,
     public diceRollerDialog: MatDialog
-    ) {}
+    ) {
+      this.inializeSuspects()
+      this.initializeWeapons()
+      this.initializeRooms()
+    }
+
+  private inializeSuspects() {
+    this.translate.get('suspects').subscribe((suspect: any) => {
+      for(let key in suspect) {
+        this.suspects.push({ name: suspect[key], color: key, checked: false });
+      }
+    });
+  }
+
+  private initializeWeapons() {
+    this.translate.get('weapons').subscribe((weapon: any) => {
+      for(let key in weapon) {
+        this.weapons.push({ name: weapon[key], checked: false });
+      }
+    });
+  }
+  private initializeRooms() {
+    this.translate.get('rooms').subscribe((room: any) => {
+      for(let key in room) {
+        this.rooms.push({ name: room[key], checked: false });
+      }
+    });
+  }
 
   openResetDialog() {
     const dialogRef = this.resetDialog.open(ConfirmationDialogComponent);
