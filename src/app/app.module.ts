@@ -27,7 +27,7 @@ import { DiceRollerDialogComponent } from './dice-roller-dialog/dice-roller-dial
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './clue/assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
