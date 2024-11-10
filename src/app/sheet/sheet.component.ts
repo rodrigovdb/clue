@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Suspect } from '../interfaces/suspect';
 import { Weapon } from '../interfaces/weapon';
@@ -13,11 +13,9 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './sheet.component.html',
   styleUrls: ['./sheet.component.scss']
 })
-export class SheetComponent {
+export class SheetComponent implements OnInit{
   suspects : Suspect[] = []
-
   weapons : Weapon[] = []
-
   rooms : Room[] = []
 
   suspect: Suspect = { name: '', color: '', checked: false };
@@ -25,45 +23,28 @@ export class SheetComponent {
   room: Room = { name: '', checked: false };
 
   constructor(
-    public translate: TranslateService,
+    public translateService: TranslateService,
     public resetDialog: MatDialog,
     public diceRollerDialog: MatDialog
-    ) {
-      this.inializeSuspects()
-      this.initializeWeapons()
-      this.initializeRooms()
-    }
+    ) {}
 
-  private inializeSuspects() {
-    this.translate.get('suspects').subscribe((suspect: any) => {
-      for(let key in suspect) {
-        this.suspects.push({ name: suspect[key], color: key, checked: false });
-      }
-    });
-  }
-
-  private initializeWeapons() {
-    this.translate.get('weapons').subscribe((weapon: any) => {
-      for(let key in weapon) {
-        this.weapons.push({ name: weapon[key], checked: false });
-      }
-    });
-  }
-  private initializeRooms() {
-    this.translate.get('rooms').subscribe((room: any) => {
-      for(let key in room) {
-        this.rooms.push({ name: room[key], checked: false });
-      }
-    });
+  ngOnInit(): void {
+    this.inializeSuspects()
+    this.initializeWeapons()
+    this.initializeRooms()
   }
 
   openResetDialog() {
     const dialogRef = this.resetDialog.open(ConfirmationDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
       this.suspects.forEach(item => item.checked = false);
       this.weapons.forEach(item => item.checked = false);
       this.rooms.forEach(item => item.checked = false);
+
+      this.suspect = { name: '', color: '', checked: false };
+      this.weapon = { name: '', checked: false };
+      this.room = { name: '', checked: false };
     });
   }
 
@@ -102,5 +83,28 @@ export class SheetComponent {
     else {
       this.room = emptyRoom;
     }
+  }
+
+  private inializeSuspects() {
+    this.translateService.get('suspects').subscribe((suspect: any) => {
+      for(let key in suspect) {
+        this.suspects.push({ name: suspect[key], color: key, checked: false });
+      }
+    });
+  }
+
+  private initializeWeapons() {
+    this.translateService.get('weapons').subscribe((weapon: any) => {
+      for(let key in weapon) {
+        this.weapons.push({ name: weapon[key], checked: false });
+      }
+    });
+  }
+  private initializeRooms() {
+    this.translateService.get('rooms').subscribe((room: any) => {
+      for(let key in room) {
+        this.rooms.push({ name: room[key], checked: false });
+      }
+    });
   }
 }
