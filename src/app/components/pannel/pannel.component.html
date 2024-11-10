@@ -1,0 +1,18 @@
+<mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <span>
+        {{ title | translate }}
+      </span>
+    </mat-panel-title>
+    <mat-panel-description>
+      {{ selected.name }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <section class="list-items">
+    <p *ngFor="let item of items; let i = index">
+      <mat-checkbox (change)="onCheckSuspect($event, item.key)">{{ item.name }}</mat-checkbox>
+    </p>
+  </section>
+</mat-expansion-panel>

@@ -1,0 +1,15 @@
+<section class="buttons">
+  <button mat-raised-button color="primary" (click)="onOpenResetDialog()">
+    <span translate>app.clear-all</span>
+  </button>
+
+  <button mat-raised-button color="primary" (click)="onOpenDiceRollerDialog()">
+    <span translate>app.roll-dice</span>
+  </button>
+</section>
+
+<mat-accordion multi>
+  <app-pannel [items]="suspects$ | async" [selected]="suspect" title="app.suspect"></app-pannel>
+  <app-pannel [items]="weapons$ | async" [selected]="weapon" title="app.weapon"></app-pannel>
+  <app-pannel [items]="rooms$ | async" [selected]="room" title="app.room"></app-pannel>
+</mat-accordion>
