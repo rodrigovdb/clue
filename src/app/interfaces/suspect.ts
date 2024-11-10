@@ -1,5 +1,5 @@
 export interface Suspect {
+  key: string;
   name: string;
-  color: string;
   checked: boolean;
 }

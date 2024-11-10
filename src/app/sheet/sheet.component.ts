@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { DiceRollerDialogComponent } from '../dice-roller-dialog/dice-roller-dialog.component';
 import { TranslateService } from '@ngx-translate/core';
+import { SessionService } from '../services/session.service';import { SuspectService } from '../services/suspect.service';
 
 @Component({
   selector: 'app-sheet',
@@ -18,18 +19,19 @@ export class SheetComponent implements OnInit{
   weapons : Weapon[] = []
   rooms : Room[] = []
 
-  suspect: Suspect = { name: '', color: '', checked: false };
+  suspect: Suspect = { key: '', name: '',checked: false };
   weapon: Weapon = { name: '', checked: false };
   room: Room = { name: '', checked: false };
 
   constructor(
     public translateService: TranslateService,
     public resetDialog: MatDialog,
-    public diceRollerDialog: MatDialog
+    public diceRollerDialog: MatDialog,
+    private suspectService: SuspectService
     ) {}
 
   ngOnInit(): void {
-    this.inializeSuspects()
+    this.suspects = this.suspectService.load()
     this.initializeWeapons()
     this.initializeRooms()
   }
@@ -42,7 +44,7 @@ export class SheetComponent implements OnInit{
       this.weapons.forEach(item => item.checked = false);
       this.rooms.forEach(item => item.checked = false);
 
-      this.suspect = { name: '', color: '', checked: false };
+      this.suspect = { key: '', name: '',checked: false };
       this.weapon = { name: '', checked: false };
       this.room = { name: '', checked: false };
     });
@@ -53,7 +55,7 @@ export class SheetComponent implements OnInit{
   }
 
   checkSuspect(ob: MatCheckboxChange){
-    const emptySuspect = { name: '', color: '', checked: false };
+    const emptySuspect = { key: '', name: '', checked: false };
 
     if(this.suspects.filter(item => item.checked === true).length == (this.suspects.length - 1)){
       this.suspect = this.suspects.find(item => item.checked === false) || emptySuspect;
@@ -83,14 +85,6 @@ export class SheetComponent implements OnInit{
     else {
       this.room = emptyRoom;
     }
-  }
-
-  private inializeSuspects() {
-    this.translateService.get('suspects').subscribe((suspect: any) => {
-      for(let key in suspect) {
-        this.suspects.push({ name: suspect[key], color: key, checked: false });
-      }
-    });
   }
 
   private initializeWeapons() {
