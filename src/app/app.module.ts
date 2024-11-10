@@ -18,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list'; 
 
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
@@ -30,41 +30,32 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    SheetComponent,
-    ConfirmationDialogComponent,
-    DiceRollerDialogComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatExpansionModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatInputModule,
-    MatSelectModule,
-    MatGridListModule,
-
-    HttpClientModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-      }
-    })
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        SheetComponent,
+        ConfirmationDialogComponent,
+        DiceRollerDialogComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatExpansionModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatInputModule,
+        MatSelectModule,
+        MatGridListModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'en',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
