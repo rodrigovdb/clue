@@ -1,8 +1,9 @@
-import { Component, Injectable, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import {TranslateService} from '@ngx-translate/core';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { SessionService } from './services/session.service';
 
 interface Language {
   code: string;
@@ -16,8 +17,7 @@ interface Language {
 })
 @Injectable()
 export class AppComponent {
-  language = this.getData('language') || 'en';
-
+  language = this.sessionService.get('language') || 'en';
   languages: Language[] = [
     { code: 'en', name: 'English' },
     { code: 'pt-BR', name: 'Português do Brasil' },
@@ -26,6 +26,7 @@ export class AppComponent {
 
   constructor(
     private translate: TranslateService,
+    private sessionService: SessionService,
     public resetDialog: MatDialog
   ) {
     translate.setDefaultLang('en');
@@ -38,24 +39,9 @@ export class AppComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       this.translate.use(this.language);
-      this.saveData('language', this.language);
+      this.sessionService.set('language', this.language);
 
       window.location.reload();
     });
   }
-
-  saveData(key: string, data: any): void {
-    localStorage.setItem(key, JSON.stringify(data));
-  }
-
-  getData(key: string): any {
-    const data = localStorage.getItem(key);
-    if(data === null) return null;
-    return JSON.parse(data);
-  }
-
-  removeData(key: string): void {
-    localStorage.removeItem(key);
-  }
-  
 }
