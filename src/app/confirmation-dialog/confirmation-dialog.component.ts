@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./confirmation-dialog.component.scss']
 })
 export class ConfirmationDialogComponent {
+  @Input() showClearMessage = true;
 }

@@ -2,7 +2,6 @@ import { Component, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import {TranslateService} from '@ngx-translate/core';
-import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { SessionService } from './services/session.service';
 
 interface Language {
@@ -27,7 +26,7 @@ export class AppComponent {
   constructor(
     private translate: TranslateService,
     private sessionService: SessionService,
-    public resetDialog: MatDialog
+    public confirmDialog: MatDialog
   ) {
     translate.setDefaultLang('en');
 
@@ -35,13 +34,9 @@ export class AppComponent {
   }
 
   changeLanguage() {
-    const dialogRef = this.resetDialog.open(ConfirmationDialogComponent);
+    this.translate.use(this.language);
+    this.sessionService.set('language', this.language);
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.translate.use(this.language);
-      this.sessionService.set('language', this.language);
-
-      window.location.reload();
-    });
+    window.location.reload();
   }
 }

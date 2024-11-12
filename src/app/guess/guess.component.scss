@@ -1,0 +1,8 @@
+:host {
+  .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 12px;
+    gap: 10px;
+  }
+}

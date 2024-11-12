@@ -6,7 +6,7 @@
   <h3>
     <span translate>confirmation-dialog.are-you-sure</span>
   </h3>
-  <p translate>confirmation-dialog.confirmation-text</p>
+  <p *ngIf="showClearMessage" translate>confirmation-dialog.confirmation-text</p>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">

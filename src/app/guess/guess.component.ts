@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
-
-import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { DiceRollerDialogComponent } from '../dice-roller-dialog/dice-roller-dialog.component';
-
-import { EntityService } from '../services/entity.service';
-import { MatAccordion } from '@angular/material/expansion';
 import { CommonModule } from '@angular/common';
-import { PannelComponent } from "../components/pannel/pannel.component";
+import { MatAccordion } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { EntityService } from '../services/entity.service';
+import { PannelComponent } from "../components/pannel/pannel.component";
+import { MatDialog } from '@angular/material/dialog';
+import { DiceRollerDialogComponent } from '../dice-roller-dialog/dice-roller-dialog.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 export interface Entity {
   key: string;
@@ -33,19 +31,25 @@ export interface Entity {
 })
 
 export class GuessComponent {
-  suspects$ = this.entityService.load('suspects');
-  weapons$ = this.entityService.load('weapons');
-  rooms$ = this.entityService.load('rooms');
-
-  suspect: Entity = { key: '', name: '',checked: false };
-  weapon: Entity = { key: '', name: '', checked: false };
-  room: Entity = { key: '', name: '', checked: false };
-
   constructor(
-    private entityService: EntityService
+    public diceRollerDialog: MatDialog,
+    public resetDialog: MatDialog,
+    public entityService: EntityService
   ) {}
 
-  onOpenResetDialog() {}
+  onOpenResetDialog() {
+    const dialogRef = this.resetDialog.open(ConfirmationDialogComponent);
 
-  onOpenDiceRollerDialog() {}
+    dialogRef.afterClosed().subscribe(() => {
+      this.entityService.clear('suspects');
+      this.entityService.clear('weapons');
+      this.entityService.clear('rooms');
+
+      window.location.reload();
+    });
+  }
+
+  onOpenDiceRollerDialog() {
+    this.diceRollerDialog.open(DiceRollerDialogComponent);
+  }
 }

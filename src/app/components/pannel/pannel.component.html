@@ -5,14 +5,14 @@
         {{ title | translate }}
       </span>
     </mat-panel-title>
-    <mat-panel-description>
+    <!-- <mat-panel-description>
       {{ selected.name }}
-    </mat-panel-description>
+    </mat-panel-description> -->
   </mat-expansion-panel-header>
 
-  <section class="list-items">
-    <p *ngFor="let item of items; let i = index">
-      <mat-checkbox (change)="onCheckSuspect($event, item.key)">{{ item.name }}</mat-checkbox>
-    </p>
+  <section class="list-items" *ngIf="items$ | async as items">
+    <ng-container *ngIf="entityType$ | async as entityType">
+      <app-entity-row *ngFor="let item of items" [item]="item" [entityType]="entityType"></app-entity-row>
+    </ng-container>
   </section>
 </mat-expansion-panel>
