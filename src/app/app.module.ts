@@ -21,8 +21,8 @@ import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { DiceRollerDialogComponent } from './dice-roller-dialog/dice-roller-dialog.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { DiceRollerDialogComponent } from './components/dice-roller-dialog/dice-roller-dialog.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {

@@ -7,8 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { EntityService } from '../../services/entity.service';
 import { PannelComponent } from "../pannel/pannel.component";
 import { MatDialog } from '@angular/material/dialog';
-import { DiceRollerDialogComponent } from '../../dice-roller-dialog/dice-roller-dialog.component';
-import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
+import { DiceRollerDialogComponent } from '../dice-roller-dialog/dice-roller-dialog.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 export interface Entity {
   key: string;
