@@ -8,8 +8,8 @@ describe('DiceRollerDialogComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DiceRollerDialogComponent]
-    });
+    imports: [DiceRollerDialogComponent]
+});
     fixture = TestBed.createComponent(DiceRollerDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

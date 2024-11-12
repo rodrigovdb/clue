@@ -1,8 +1,12 @@
 import { Component, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { SessionService } from './services/session.service';
+import { MatToolbar } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 interface Language {
   code: string;
@@ -10,9 +14,11 @@ interface Language {
 }
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: true,
+    imports: [MatToolbar, TranslateModule, FormsModule, NgFor, RouterOutlet]
 })
 @Injectable()
 export class AppComponent {
