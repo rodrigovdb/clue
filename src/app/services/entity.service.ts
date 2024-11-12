@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SessionService } from './session.service';
 import { TranslateService } from '@ngx-translate/core';
 import { combineLatest, map } from 'rxjs';
-import { Entity } from '../guess/guess.component';
+import { Entity } from '../components/guess/guess.component';
 
 export type EntityType = 'suspects' | 'weapons' | 'rooms';
 

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
-import { Entity } from 'src/app/guess/guess.component';
+import { Entity } from 'src/app/components/guess/guess.component';
 import { EntityService, EntityType } from 'src/app/services/entity.service';
 
 @Component({

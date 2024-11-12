@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
-import { Entity } from 'src/app/guess/guess.component';
+import { Entity } from 'src/app/components/guess/guess.component';
 import { EntityRowComponent } from "../entity-row/entity-row.component";
 import { EntityService, EntityType } from 'src/app/services/entity.service';
 import { BehaviorSubject, combineLatest, filter, fromEvent, map } from 'rxjs';

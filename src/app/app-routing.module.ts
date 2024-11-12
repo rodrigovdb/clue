@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GuessComponent } from './guess/guess.component';
+import { GuessComponent } from './components/guess/guess.component';
 
 const routes: Routes = [
   {
