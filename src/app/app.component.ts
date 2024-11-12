@@ -5,7 +5,7 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { SessionService } from './services/session.service';
 import { MatToolbar } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 interface Language {
@@ -18,7 +18,13 @@ interface Language {
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    imports: [MatToolbar, TranslateModule, FormsModule, NgFor, RouterOutlet]
+    imports: [
+      CommonModule,
+      MatToolbar,
+      TranslateModule,
+      FormsModule,
+      RouterOutlet
+    ]
 })
 @Injectable()
 export class AppComponent {
