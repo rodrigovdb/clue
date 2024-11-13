@@ -1,0 +1,50 @@
+{
+  "app": {
+    "title": "Detetive - Planilha",
+    "clear-all": "Limpar tudo",
+    "roll-dice": "Rolar Dados",
+    "suspect": "Suspeitos",
+    "weapon": "Armas",
+    "room": "Cômodos",
+    "language": "Idioma"
+  },
+  "dice-roller": {
+    "title": "Rolador de Dados",
+    "dice": "Dado",
+    "total": "Total"
+  },
+  "confirmation-dialog": {
+    "title": "Limpar Tudo",
+    "are-you-sure": "Está certo disso?",
+    "confirmation-text": "Esta operação irá limpar sua ficha. Isso não poderá ser desfeito.",
+    "cancel": "Cancelar",
+    "confirm": "Limpar tudo"
+  },
+  "suspects": {
+    "red": "Srta. Scarlet",
+    "yellow": "Cel. Mustard",
+    "white": "Sra. White",
+    "green": "Rev. Green",
+    "blue": "Sra. Peacock",
+    "purple": "Prof. Plum"
+  },
+  "weapons": {
+    "candlestick": "Castiçal",
+    "knife": "Faca",
+    "lead-pipe": "Cano de Chumbo",
+    "revolver": "Revólver",
+    "rope": "Corda",
+    "wrench": "Chave Inglesa"
+  },
+  "rooms": {
+    "hall": "Entrada",
+    "lounge": "Sala de Estar",
+    "dining-room": "Sala de Jantar",
+    "kitchen": "Cozinha",
+    "ballroom": "Sala de Música",
+    "conservatory": "Jardim de Inverno",
+    "billiard-room": "Salão de Jogos",
+    "library": "Biblioteca",
+    "study": "Escritório"
+  }
+}
