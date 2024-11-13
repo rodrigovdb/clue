@@ -57,6 +57,8 @@ export class PannelComponent implements OnChanges {
           this.rawItems = rawItems;
 
           this.items = this.buildItemsList(this.rawItems, this.sessionItems);
+
+          this.hasChanges$.next(true);
         });
       });
     }
