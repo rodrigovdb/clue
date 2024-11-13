@@ -5,14 +5,19 @@
         {{ title | translate }}
       </span>
     </mat-panel-title>
-    <!-- <mat-panel-description>
-      {{ selected.name }}
-    </mat-panel-description> -->
+    <mat-panel-description *ngIf="selected$ | async as selected">
+      {{ nameFromKey(selected.key) }}
+    </mat-panel-description>
   </mat-expansion-panel-header>
 
-  <section class="list-items" *ngIf="items$ | async as items">
-    <ng-container *ngIf="entityType$ | async as entityType">
-      <app-entity-row *ngFor="let item of items" [item]="item" [entityType]="entityType"></app-entity-row>
+  <section class="list-items" *ngIf="items">
+    <ng-container *ngIf="entityType">
+      <app-entity-row
+        *ngFor="let item of items"
+        [item]="item"
+        [entityType]="entityType"
+        (clickedItem)="onClickItem($event)"
+      ></app-entity-row>
     </ng-container>
   </section>
 </mat-expansion-panel>

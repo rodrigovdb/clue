@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { Entity } from 'src/app/components/guess/guess.component';
 import { EntityService, EntityType } from 'src/app/services/entity.service';
@@ -17,6 +17,7 @@ import { EntityService, EntityType } from 'src/app/services/entity.service';
 export class EntityRowComponent {
   @Input() entityType!: EntityType;
   @Input() item!: Entity;
+  @Output() clickedItem = new EventEmitter<Entity>();
 
   constructor(private entityService: EntityService) {}
 
@@ -24,5 +25,6 @@ export class EntityRowComponent {
     this.item.checked = event.checked;
 
     this.entityService.toggleItem(this.entityType, this.item);
+    this.clickedItem.emit(this.item);
   }
 }

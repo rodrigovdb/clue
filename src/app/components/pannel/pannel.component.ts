@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
 import { Entity } from 'src/app/components/guess/guess.component';
 import { EntityRowComponent } from "../entity-row/entity-row.component";
 import { EntityService, EntityType } from 'src/app/services/entity.service';
-import { BehaviorSubject, combineLatest, filter, fromEvent, map } from 'rxjs';
+import { BehaviorSubject, combineLatest, filter, fromEvent, map, Observable, Subject, tap } from 'rxjs';
 import { SessionService } from 'src/app/services/session.service';
 
 interface SessionItem {
@@ -26,36 +26,48 @@ interface SessionItem {
   styleUrl: './pannel.component.scss'
 })
 export class PannelComponent implements OnChanges {
-  @Input() set entityType(value: EntityType) {
-    this.entityType$.next(value);
-  }
+  @Input() entityType!: EntityType;
   @Input() title!: string;
 
-  entityType$ = new BehaviorSubject<EntityType | null>(null);
-  rawItems$ = new BehaviorSubject<Entity[]>([]);
-  sessionItems$ = new BehaviorSubject<SessionItem[]>([]);
+  hasChanges$ = new Subject<boolean>();
 
-  items$ = combineLatest([this.rawItems$, this.sessionItems$]).pipe(
-    map(([rawItems, sessionItems]) => this.buildItemsList(rawItems, sessionItems))
-  );
+  rawItems: Entity[] = [];
+  sessionItems: SessionItem[] = [];
+  items: Entity[] = [];
 
-  selected$ = this.items$.pipe(
-    map(items => items.filter(item => !item.checked)),
-    map(items => {
-      debugger
-    })
-  );
+  selected$ = this.hasChanges$.pipe(
+    map(() => this.sessionService.get(this.entityType).filter((item: Entity) => !item.checked)),
+    map(items => items.length != 1 ? null : items[0])
+  )
 
   constructor(
     private sessionService: SessionService,
     private entityService: EntityService
   ) {}
 
+  // TODO: FIX THIS MESS
   ngOnChanges(changes: SimpleChanges) {
     if(changes && changes['entityType']) {
-      this.entityService.load(changes['entityType'].currentValue).subscribe(items => this.rawItems$.next(items));
-      this.sessionService.watch(changes['entityType'].currentValue).subscribe(items => this.sessionItems$.next(items));
+      const entityType = changes['entityType'].currentValue;
+
+      this.sessionService.watch(entityType).subscribe(sessionItems => {
+        this.sessionItems = sessionItems;
+
+        this.entityService.load(entityType).subscribe(rawItems => {
+          this.rawItems = rawItems;
+
+          this.items = this.buildItemsList(this.rawItems, this.sessionItems);
+        });
+      });
     }
+  }
+
+  onClickItem($event: any) {
+    this.hasChanges$.next(true);
+  }
+
+  nameFromKey(key: string) {
+    return this.rawItems.find(item => item.key === key)?.name;
   }
 
   private buildItemsList(rawItems: Entity[], sessionItems: SessionItem[]): Entity[] {
