@@ -1,0 +1,23 @@
+<mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <span>
+        {{ title | translate }}
+      </span>
+    </mat-panel-title>
+    <mat-panel-description *ngIf="selected$ | async as selected">
+      {{ nameFromKey(selected.key) }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <section class="list-items" *ngIf="items">
+    <ng-container *ngIf="entityType">
+      <app-entity-row
+        *ngFor="let item of items"
+        [item]="item"
+        [entityType]="entityType"
+        (clickedItem)="onClickItem($event)"
+      ></app-entity-row>
+    </ng-container>
+  </section>
+</mat-expansion-panel>
