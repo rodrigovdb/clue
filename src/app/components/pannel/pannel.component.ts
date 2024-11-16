@@ -45,31 +45,30 @@ export class PannelComponent implements OnChanges {
     private entityService: EntityService
   ) {}
 
-  // TODO: FIX THIS MESS
   ngOnChanges(changes: SimpleChanges) {
     if(changes && changes['entityType']) {
       const entityType = changes['entityType'].currentValue;
+      const sessionItems = this.fetchItemsFromSession();
 
-      this.sessionService.watch(entityType).subscribe(sessionItems => {
-        this.sessionItems = sessionItems;
+      this.entityService.load(entityType).subscribe(rawItems => {
+        this.rawItems = rawItems;
+        this.items = this.buildItemsList(rawItems, sessionItems);
 
-        this.entityService.load(entityType).subscribe(rawItems => {
-          this.rawItems = rawItems;
-
-          this.items = this.buildItemsList(this.rawItems, this.sessionItems);
-
-          this.hasChanges$.next(true);
-        });
+        this.hasChanges$.next(true);
       });
     }
   }
 
-  onClickItem($event: any) {
+  onClickItem() {
     this.hasChanges$.next(true);
   }
 
   nameFromKey(key: string) {
     return this.rawItems.find(item => item.key === key)?.name;
+  }
+
+  private fetchItemsFromSession(): SessionItem[] {
+    return this.sessionService.get(this.entityType) || [];
   }
 
   private buildItemsList(rawItems: Entity[], sessionItems: SessionItem[]): Entity[] {

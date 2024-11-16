@@ -12,10 +12,6 @@ export class SessionService {
     @Inject(DOCUMENT) private document: Document
   ) {}
 
-  watch(key: string) {
-    return of(this.get(key))
-  }
-
   set(key: string, value: any) {
     this.storage?.setItem(key, JSON.stringify(value));
   }

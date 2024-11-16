@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SessionService } from './session.service';
 import { TranslateService } from '@ngx-translate/core';
-import { combineLatest, map } from 'rxjs';
+import { map } from 'rxjs';
 import { Entity } from '../components/guess/guess.component';
 
 export type EntityType = 'suspects' | 'weapons' | 'rooms';
@@ -41,6 +41,7 @@ export class EntityService {
 
   toggleItem(who: EntityType, entity: Entity) {
     const items = this.loadFromSession(who)
+
     items.forEach(item => {
       if(item.key === entity.key) {
         item.checked = entity.checked;
