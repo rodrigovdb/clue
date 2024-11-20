@@ -1,17 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
 import { Entity } from 'src/app/components/guess/guess.component';
 import { EntityRowComponent } from "../entity-row/entity-row.component";
 import { EntityService, EntityType } from 'src/app/services/entity.service';
-import { BehaviorSubject, combineLatest, filter, fromEvent, map, Observable, Subject, tap } from 'rxjs';
-import { SessionService } from 'src/app/services/session.service';
-
-interface SessionItem {
-  key: string;
-  checked: boolean;
-}
+import { map, Subject } from 'rxjs';
+import { SessionItem, SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-pannel',
@@ -73,10 +68,10 @@ export class PannelComponent implements OnChanges {
 
   private buildItemsList(rawItems: Entity[], sessionItems: SessionItem[]): Entity[] {
     return rawItems.map((rawItem) => {
-      const sessionItem = sessionItems.find((sessionItem: any) => sessionItem.key === rawItem.key);
-      const { checked, ...value } = rawItem
+      const sessionItem = sessionItems.find((sessionItem: SessionItem) => sessionItem.key === rawItem.key);
+      const { key, name } = rawItem
 
-      return {...value, checked: sessionItem?.checked || false }
+      return { key, name, checked: sessionItem?.checked || false }
     })
   }
 }

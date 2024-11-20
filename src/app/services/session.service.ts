@@ -1,6 +1,10 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { of } from 'rxjs';
+
+export interface SessionItem {
+  key: string;
+  checked: boolean;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +16,7 @@ export class SessionService {
     @Inject(DOCUMENT) private document: Document
   ) {}
 
-  set(key: string, value: any) {
+  set(key: string, value: SessionItem[]) {
     this.storage?.setItem(key, JSON.stringify(value));
   }
 

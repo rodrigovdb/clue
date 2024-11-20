@@ -5,7 +5,7 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { SessionService } from './services/session.service';
 import { MatToolbar } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 interface Language {
