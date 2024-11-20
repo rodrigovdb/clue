@@ -9,16 +9,15 @@ import { map, Subject } from 'rxjs';
 import { SessionItem, SessionService } from 'src/app/services/session.service';
 
 @Component({
-  selector: 'app-pannel',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatExpansionModule,
-    TranslateModule,
-    EntityRowComponent
-],
-  templateUrl: './pannel.component.html',
-  styleUrl: './pannel.component.scss'
+    selector: 'app-pannel',
+    imports: [
+        CommonModule,
+        MatExpansionModule,
+        TranslateModule,
+        EntityRowComponent
+    ],
+    templateUrl: './pannel.component.html',
+    styleUrl: './pannel.component.scss'
 })
 export class PannelComponent implements OnChanges {
   @Input() entityType!: EntityType;
