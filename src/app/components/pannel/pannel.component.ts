@@ -5,8 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Entity } from 'src/app/components/guess/guess.component';
 import { EntityRowComponent } from "../entity-row/entity-row.component";
 import { EntityService, EntityType } from 'src/app/services/entity.service';
-import { BehaviorSubject, combineLatest, filter, fromEvent, map, Observable, Subject, tap } from 'rxjs';
-import { SessionService } from 'src/app/services/session.service';
+import { map, Subject } from 'rxjs';
 
 interface SessionItem {
   key: string;
@@ -36,12 +35,11 @@ export class PannelComponent implements OnChanges {
   items: Entity[] = [];
 
   selected$ = this.hasChanges$.pipe(
-    map(() => this.sessionService.get(this.entityType).filter((item: Entity) => !item.checked)),
+    map(() => this.entityService.loadFromSession(this.entityType).filter((item: Entity) => !item.checked)),
     map(items => items.length != 1 ? null : items[0])
   )
 
   constructor(
-    private sessionService: SessionService,
     private entityService: EntityService
   ) {}
 
@@ -68,7 +66,7 @@ export class PannelComponent implements OnChanges {
   }
 
   private fetchItemsFromSession(): SessionItem[] {
-    return this.sessionService.get(this.entityType) || [];
+    return this.entityService.loadFromSession(this.entityType);
   }
 
   private buildItemsList(rawItems: Entity[], sessionItems: SessionItem[]): Entity[] {

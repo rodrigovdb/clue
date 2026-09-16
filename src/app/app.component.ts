@@ -13,6 +13,10 @@ interface Language {
   name: string;
 }
 
+interface Edition {
+  id: string;
+}
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -34,6 +38,11 @@ export class AppComponent {
     { code: 'pt-BR', name: 'Português do Brasil' },
     { code: 'fr', name: 'Français' },
   ];
+  edition = this.sessionService.get('edition') || 'classic';
+  editions: Edition[] = [
+    { id: 'classic' },
+    { id: 'harry-potter' },
+  ];
 
   constructor(
     private translate: TranslateService,
@@ -48,6 +57,12 @@ export class AppComponent {
   changeLanguage() {
     this.translate.use(this.language);
     this.sessionService.set('language', this.language);
+
+    window.location.reload();
+  }
+
+  changeEdition() {
+    this.sessionService.set('edition', this.edition);
 
     window.location.reload();
   }

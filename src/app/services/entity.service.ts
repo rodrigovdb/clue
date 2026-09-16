@@ -5,6 +5,9 @@ import { map } from 'rxjs';
 import { Entity } from '../components/guess/guess.component';
 
 export type EntityType = 'suspects' | 'weapons' | 'rooms';
+export type EditionId = 'classic' | 'harry-potter';
+
+const DEFAULT_EDITION: EditionId = 'classic';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,9 @@ export class EntityService {
   ) { }
 
   load(who: EntityType) {
-    return this.translateService.get(who).pipe(
+    const edition = this.getEdition();
+
+    return this.translateService.get(`editions.${edition}.${who}`).pipe(
       map((items) => {
         const sessionItems = this.loadFromSession(who);
         const response = [];
@@ -52,10 +57,18 @@ export class EntityService {
   }
 
   persist(who: EntityType, items: Entity[]) {
-    this.sessionService.set(who, items.map(item => ({ key: item.key, checked: item.checked })));
+    this.sessionService.set(this.sessionKey(who), items.map(item => ({ key: item.key, checked: item.checked })));
   }
 
-  private loadFromSession(who: EntityType): Entity[] {
-    return this.sessionService.get(who) || []
+  loadFromSession(who: EntityType): Entity[] {
+    return this.sessionService.get(this.sessionKey(who)) || []
+  }
+
+  private getEdition(): EditionId {
+    return this.sessionService.get('edition') || DEFAULT_EDITION;
+  }
+
+  private sessionKey(who: EntityType): string {
+    return `${this.getEdition()}:${who}`;
   }
 }

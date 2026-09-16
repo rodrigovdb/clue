@@ -2,6 +2,16 @@
   <span translate>app.title</span>
   <span class="toolbar-spacer"></span>
 
+  <span class="edition-label" translate>app.edition</span>
+
+  <span>
+      <select [(ngModel)]="edition" name="edition" (change)="changeEdition()">
+        <option *ngFor="let editionOption of editions" [value]="editionOption.id">
+          {{ 'app.editions.' + editionOption.id | translate }}
+        </option>
+      </select>
+  </span>
+
   <span class="language-label" translate>app.language</span>
 
   <span>
