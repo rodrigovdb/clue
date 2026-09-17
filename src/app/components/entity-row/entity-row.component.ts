@@ -5,14 +5,13 @@ import { Entity } from 'src/app/components/guess/guess.component';
 import { EntityService, EntityType } from 'src/app/services/entity.service';
 
 @Component({
-  selector: 'app-entity-row',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatCheckboxModule
-  ],
-  templateUrl: './entity-row.component.html',
-  styleUrl: './entity-row.component.scss'
+    selector: 'app-entity-row',
+    imports: [
+        CommonModule,
+        MatCheckboxModule
+    ],
+    templateUrl: './entity-row.component.html',
+    styleUrl: './entity-row.component.scss'
 })
 export class EntityRowComponent {
   @Input() entityType!: EntityType;

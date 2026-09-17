@@ -9,7 +9,6 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-confirmation-dialog',
     templateUrl: './confirmation-dialog.component.html',
     styleUrls: ['./confirmation-dialog.component.scss'],
-    standalone: true,
     imports: [MatDialogTitle, TranslateModule, CdkScrollable, MatDialogContent, NgIf, MatDialogActions, MatButton, MatDialogClose]
 })
 export class ConfirmationDialogComponent {

@@ -17,17 +17,16 @@ export interface Entity {
 }
 
 @Component({
-  selector: 'app-guess',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatAccordion,
-    MatButtonModule,
-    PannelComponent,
-    TranslateModule
-],
-  templateUrl: './guess.component.html',
-  styleUrl: './guess.component.scss'
+    selector: 'app-guess',
+    imports: [
+        CommonModule,
+        MatAccordion,
+        MatButtonModule,
+        PannelComponent,
+        TranslateModule
+    ],
+    templateUrl: './guess.component.html',
+    styleUrl: './guess.component.scss'
 })
 
 export class GuessComponent {

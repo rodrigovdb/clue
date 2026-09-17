@@ -26,7 +26,7 @@ export class EntityService {
         const sessionItems = this.loadFromSession(who);
         const response = [];
 
-        for(let key in items) {
+        for(const key in items) {
           const checked = sessionItems.find(sessionItem => sessionItem.key === key)?.checked || false;
           response.push({ name: items[key], key, checked });
         }
