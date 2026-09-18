@@ -6,7 +6,12 @@
     "suspect": "Suspect",
     "weapon": "Weapon",
     "room": "Room",
-    "language": "Language"
+    "language": "Language",
+    "edition": "Edition",
+    "editions": {
+      "classic": "Classic",
+      "harry-potter": "Harry Potter"
+    }
   },
   "dice-roller": {
     "title": "Dice Roller",
@@ -20,31 +25,64 @@
     "cancel": "Cancel",
     "confirm": "Clear All"
   },
-  "suspects": {
-    "red": "Miss Scarlet",
-    "yellow": "Colonel Mustard",
-    "white": "Mrs. White",
-    "green": "Mr. Green",
-    "blue": "Mrs. Peacock",
-    "purple": "Professor Plum"
-  },
-  "weapons": {
-    "candlestick": "Candlestick",
-    "knife": "Knife",
-    "lead-pipe": "Lead Pipe",
-    "revolver": "Revolver",
-    "rope": "Rope",
-    "wrench": "Wrench"
-  },
-  "rooms": {
-    "ballroom": "Ballroom",
-    "billiard-room": "Billiard Room",
-    "conservatory": "Conservatory",
-    "dining-room": "Dining Room",
-    "hall": "Hall",
-    "kitchen": "Kitchen",
-    "library": "Library",
-    "lounge": "Lounge",
-    "study": "Study"
+  "editions": {
+    "classic": {
+      "suspects": {
+        "red": "Miss Scarlet",
+        "yellow": "Colonel Mustard",
+        "white": "Mrs. White",
+        "green": "Mr. Green",
+        "blue": "Mrs. Peacock",
+        "purple": "Professor Plum"
+      },
+      "weapons": {
+        "candlestick": "Candlestick",
+        "knife": "Knife",
+        "lead-pipe": "Lead Pipe",
+        "revolver": "Revolver",
+        "rope": "Rope",
+        "wrench": "Wrench"
+      },
+      "rooms": {
+        "ballroom": "Ballroom",
+        "billiard-room": "Billiard Room",
+        "conservatory": "Conservatory",
+        "dining-room": "Dining Room",
+        "hall": "Hall",
+        "kitchen": "Kitchen",
+        "library": "Library",
+        "lounge": "Lounge",
+        "study": "Study"
+      }
+    },
+    "harry-potter": {
+      "suspects": {
+        "bellatrix": "Bellatrix Lestrange",
+        "crabbe-goyle": "Crabbe & Goyle",
+        "umbridge": "Dolores Umbridge",
+        "draco": "Draco Malfoy",
+        "lucius": "Lucius Malfoy",
+        "pettigrew": "Peter Pettigrew"
+      },
+      "weapons": {
+        "impedimenta": "Impedimenta",
+        "mandrake": "Mandrake",
+        "petrificus-totalus": "Petrificus Totalus",
+        "portkey": "Portkey",
+        "sleeping-draught": "Sleeping Draught",
+        "vanishing-cabinet": "Vanishing Cabinet"
+      },
+      "rooms": {
+        "great-hall": "Great Hall",
+        "hospital-wing": "Hospital Wing",
+        "room-of-requirement": "Room of Requirement",
+        "potions-classroom": "Potions Classroom",
+        "trophy-room": "Trophy Room",
+        "divination-classroom": "Divination Classroom",
+        "owlery": "Owlery",
+        "library": "Library",
+        "dada": "Defense Against the Dark Arts"
+      }
+    }
   }
 }
